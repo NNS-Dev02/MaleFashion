@@ -1,0 +1,147 @@
+﻿@model MaleFashion.Models.TaiKhoan
+@using System.Web.Optimization;
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tạo Tài Khoản</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Icon WEBSITE -->
+    <link rel="shortcut icon" href="~/Images/TabWeb.png" type="image/x-icon" />
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <!-- Css Styles -->
+    @Styles.Render("~/bundle/css3")
+
+</head>
+<body class="login">
+
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div id="login" class="animate form login_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+                    {
+                        <h1>Tạo tài khoản</h1>
+                        <div class="col-md-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                            <div class="col-md-6" style="padding-left: 0px !important; padding-right: 5px !important;">
+                                <span class="tieuDe">Họ:</span>
+                                @Html.TextBoxFor(m => m.hoDem, "", new { @class = "form-control", })
+                                @Html.ValidationMessageFor(m => m.hoDem, "", new { @class = "badge badge-danger" })
+                            </div>
+                            <div class="col-md-6" style="padding-left: 5px !important; padding-right: 0px !important;">
+                                <span class="tieuDe">Tên:</span>
+                                @Html.TextBoxFor(m => m.tenTV, new { @class = "form-control", })
+                                @Html.ValidationMessageFor(m => m.tenTV, "", new { @class = "badge badge-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                            <div class="col-md-6" style="padding-left: 0px !important; padding-right: 5px !important;">
+                                <span class="tieuDe">Giới tính:</span>
+                                @Html.DropDownListFor(m => m.GioiTinh,
+                                  new List<SelectListItem> {
+                                        new SelectListItem { Value = "Nam" , Text = "Chọn giới tính" },
+                                        new SelectListItem { Value = "Nam" , Text = "Nam" },
+                                        new SelectListItem { Value = "Nữ" , Text = "Nữ" }
+                                },
+                              new { @class = "form-control", @style = "margin-bottom: 20px;" })
+                            </div>
+                            <div class="col-md-6" style="padding-left: 5px !important; padding-right: 0px !important;">
+                                <span class="tieuDe">Ngày sinh:</span>
+                                @Html.TextBoxFor(m => m.ngaysinh, new { @class = "form-control", @type = "date" })
+                                @Html.ValidationMessageFor(m => m.ngaysinh, "", new { @class = "badge badge-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding-left: 0px !important; padding-right: 0px !important;">
+                            <div class="col-md-6" style="padding-left: 0px !important; padding-right: 5px !important;">
+                                <span class="tieuDe">Điện thoại:</span>
+                                @Html.TextBoxFor(m => m.soDT, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.soDT, "", new { @class = "badge badge-danger" })
+                            </div>
+                            <div class="col-md-6" style="padding-left: 5px !important; padding-right: 0px !important;">
+                                <span class="tieuDe">Email:</span>
+                                @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.email, "", new { @class = "badge badge-danger" })
+                            </div>
+                        </div>
+                        <div>
+                            <span class="tieuDe">Địa chỉ:</span>
+                            @Html.TextBoxFor(m => m.diaChi, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.diaChi, "", new { @class = "badge badge-danger" })
+                        </div>
+                        <div>
+                            <span class="tieuDe">Tài khoản:</span>
+                            @Html.TextBoxFor(m => m.taiKhoan1, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.taiKhoan1, "", new { @class = "badge badge-danger" })
+                        </div>
+                        <div>
+                            <span class="tieuDe">Mật khẩu:</span>
+                            @Html.PasswordFor(m => m.matKhau, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.matKhau, "", new { @class = "badge badge-danger" })
+                        </div>
+                        <div>
+                            <span class="tieuDe">Vai trò:</span>
+                            @Html.DropDownListFor(m => m.GroupID,
+                              new List<SelectListItem> {
+                                    new SelectListItem { Value = "1" , Text = "Chọn vai trò" },
+                                    new SelectListItem { Value = "1" , Text = "Người dùng thông thường" },
+                                    new SelectListItem { Value = "2" , Text = "Người vận chuyển" }
+                                },
+                              new { @class = "form-control", @style = "margin-bottom: 20px;" })
+                        </div>
+                        <div>
+                            @Html.HiddenFor(m => m.ngayTao)
+                        </div>
+                        <div>
+                            <input id="thongBao" type="submit" value="Tạo tài khoản" class="btn btn-default submit"
+                                   style="border: 1px solid black; margin-left: 27%; width: 150px; border-radius: 40px; ">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                <a href="@Url.Action("Index", "Login")" class="to_register"> Bạn đã có tài khoản? </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <a href="@Url.Action("Index", "Home")" style="text-decoration:none;">
+                                    <h1><i class="fab fa-shopify"></i> Male Fashion!</h1>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!--Thông báo tạo tài khoản thành công-->
+
+    <script language="javascript">
+        var button = document.getElementById("thongBao");
+        button.onclick = function () {
+            alert("Chúc mừng bạn đã tạo tài khoản thành công!"); window.open('@Url.Action("Index", "Login")')
+        }
+    </script>
+
+</body>
+</html>

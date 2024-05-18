@@ -1,0 +1,162 @@
+﻿@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+    CartShop x = ViewData["Cart"] as CartShop;
+}
+
+<!-- page content -->
+<div style="width: 100%; height: 100px; background-color: #28a74567; margin-bottom: 50px;">
+    <div style="text-align:center">
+        <h2 style="color:green; font-weight:bolder;padding-top:30px;">Chúc mừng, <small>bạn đã thanh toán thành công!</small></h2>
+    </div>
+</div>
+<div class="row" style="padding: 0 50px; margin-left:0px !important; margin-right:0px !important;">
+    <div class="col-md-12">
+        <div>
+            <div>
+                <section>
+                    <!-- title row -->
+                    <div class="row">
+                        <div style="margin-left:100px;">
+                            <h1>
+                                <img src="~/Images/LOGO_Shop.png" style="width: 100px; height: 100px; margin-top: -25px; position: absolute; margin-left: -100px;">
+                                &nbsp;Male Fashion.
+                                <small style=" font-size: 15px; margin-left: 450px;">Thời gian: @string.Format("{0: HH:mm:ss - dddd, dd MMMM, yyyy}", DateTime.Now)</small>
+                            </h1>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                        <div class="col-sm-4 invoice-col">
+                            Từ
+                            <address>
+                                <strong>Male Fashion Shop</strong>
+                                <br>Địa chỉ: An Phú Đông, Quận12, TP.Hồ Chí Minh
+                                <br>Điện thoại: +84 123456789
+                                <br>Email: male_fashion@gmail.com
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col">
+                            Đến
+                            @{ foreach (KhachHang k in Common.getKhachHangMoi(1))
+                                {
+                                    <address>
+                                        <strong>@k.tenKH</strong>
+                                        <br>Địa chỉ: @k.diaChi
+                                        <br>Điện thoại: @k.soDT
+                                        <br>Email: @k.email
+                                    </address>
+                                }
+                            }
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col">
+                            @{ foreach (DonHang d in Common.getDonHangMoi(1))
+                                {
+                                    <b>ID Khách hàng: @d.maKH</b>
+                                    <br>
+                                    <br>
+                                    <b>ID Đơn hàng: @d.soDH</b>
+                                    <br>
+                                    <b>Ngày giao: @string.Format("{0: dd/MM/yyyy}", d.ngayGH)</b>
+                                    <br>
+                                    <b>Tài khoản: Khách hàng</b>
+                                }
+                            }
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="  table">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Mã sản phẩm</th>
+                                        <th style="width: 40%">Tóm tắt sản phẩm</th>
+                                        <th>Tổng thu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (CtDonHang i in x.SanPhamDC.Values)
+                                        {
+                                            <tr>
+                                                <td>@Common.getNameProductByID(i.maSP)</td>
+                                                <td>@i.soLuong</td>
+                                                <td>@i.maSP</td>
+                                                <td>@Common.getNdTomTatProductByID(i.maSP)</td>
+                                                <td>@String.Format("{0:#,##0} VNĐ", x.moneyOfOneItem(i))</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <div class="row">
+                        <!-- accepted payments column -->
+                        <div class="col-md-6">
+                            <p class="lead">Phương thức thanh toán:</p>
+                            <img src="~/Images/visa.png" alt="Visa">
+                            <img src="~/Images/mastercard.png" alt="Mastercard">
+                            <img src="~/Images/american-express.png" alt="American Express">
+                            <img src="~/Images/paypal.png" alt="Paypal">
+                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                                Nhiều khuyến mãi đặc biệt !!!
+                            </p>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            <p class="lead">Tất cả các chi phí cần trả : </p>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:50%">Tiền đơn hàng:</th>
+                                            <td>@String.Format("{0:#,##0} VNĐ", x.totalOfCartShop())</td>
+                                        </tr>
+                                        <tr>
+                                            <th title="1 Sản phẩm = 5.000 VNĐ.">Phí vận chuyển: <i class="fas fa-info-circle" style="color:red;"></i></th>
+                                            <td>@String.Format("{0:#,##0} VNĐ", x.totalOfShip())</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Thuế VAT (3%)</th>
+                                            <td>@String.Format("{0:#,##0} VNĐ", (x.totalOfCartShop() * 3) / 100)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tổng cộng:</th>
+                                            <td>@String.Format("{0:#,##0} VNĐ", (x.totalOfCartShop() + x.totalOfShip() + (x.totalOfCartShop() * 3) / 100))</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- this row will not appear when printing -->
+                    <div class="row no-print">
+                        <div class=" ">
+                            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> In</button>
+                            <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> In trên thẻ</button>
+                            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Tạo file PDF</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<!-- /page content -->

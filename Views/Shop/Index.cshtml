@@ -1,0 +1,254 @@
+﻿@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Tìm kiếm...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Thời Trang</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll tab" style="display: flex; flex-direction: column;">
+                                                @{
+                                                    foreach (LoaiSP i in Common.getCategories())
+                                                    {
+                                                        <li class="menuLoaiSP"><a class="tablinks" onclick="openCity(event, '@i.maLoai')">@i.tenLoai</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseTwo">Thương Hiệu</a>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__brand">
+                                            <ul>
+                                                <li><a href="#">Louis Vuitton</a></li>
+                                                <li><a href="#">Chanel</a></li>
+                                                <li><a href="#">Hermes</a></li>
+                                                <li><a href="#">Gucci</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseThree">Theo Giá</a>
+                                </div>
+                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__price">
+                                            <ul>
+                                                <li><a href="#">0 - 2.000.000 VNĐ</a></li>
+                                                <li><a href="#">2.000.000 - 5.000.000 VNĐ</a></li>
+                                                <li><a href="#">5.000.000 - 10.000.000 VNĐ</a></li>
+                                                <li><a href="#">10.000.000 VNĐ +</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseFive">Colors</a>
+                                </div>
+                                <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__color">
+                                            <label class="c-1" for="sp-1">
+                                                <input type="radio" id="sp-1">
+                                            </label>
+                                            <label class="c-2" for="sp-2">
+                                                <input type="radio" id="sp-2">
+                                            </label>
+                                            <label class="c-3" for="sp-3">
+                                                <input type="radio" id="sp-3">
+                                            </label>
+                                            <label class="c-4" for="sp-4">
+                                                <input type="radio" id="sp-4">
+                                            </label>
+                                            <label class="c-5" for="sp-5">
+                                                <input type="radio" id="sp-5">
+                                            </label>
+                                            <label class="c-6" for="sp-6">
+                                                <input type="radio" id="sp-6">
+                                            </label>
+                                            <label class="c-7" for="sp-7">
+                                                <input type="radio" id="sp-7">
+                                            </label>
+                                            <label class="c-8" for="sp-8">
+                                                <input type="radio" id="sp-8">
+                                            </label>
+                                            <label class="c-9" for="sp-9">
+                                                <input type="radio" id="sp-9">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseFour">KÍCH CỠ</a>
+                                </div>
+                                <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__size">
+                                            <label for="xs">
+                                                xs
+                                                <input type="radio" id="xs">
+                                            </label>
+                                            <label for="sm">
+                                                s
+                                                <input type="radio" id="sm">
+                                            </label>
+                                            <label for="md">
+                                                m
+                                                <input type="radio" id="md">
+                                            </label>
+                                            <label for="md">
+                                                l
+                                                <input type="radio" id="md">
+                                            </label>
+                                            <label for="xl">
+                                                xl
+                                                <input type="radio" id="xl">
+                                            </label>
+                                            <label for="xxl">
+                                                xxl
+                                                <input type="radio" id="xxl">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Hiển thị 1-6 trong số 30 kết quả</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__right">
+                                <p>Sắp xếp theo giá:</p>
+                                <select>
+                                    <option value="">Từ thấp đến cao</option>
+                                    <option value="">0 - 2.000.000 VNĐ</option>
+                                    <option value="">5.000.000 - 10.000.000 VNĐ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @{
+                    foreach (LoaiSP i in Common.getCategories())
+                    {
+                        <div class="row tabcontent" id="@i.maLoai">
+                            @{ int n = 1;
+                                foreach (SanPham j in Common.getProductByLoaiSP(i.maLoai))
+                                {
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="product__item">
+                                            <div class="product__item__pic set-bg" data-setbg="@j.hinhDD">
+                                                <ul class="product__hover">
+                                                    <li>
+                                                        <a class="IconInProduct" href="#"><i class="far fa-heart"></i> <span>Thích</span></a>
+                                                    </li>
+                                                    <li style="margin-top: 20px; margin-bottom: 20px;">
+                                                        <a class="IconInProduct" href="#"><i class="fas fa-exchange-alt"></i> <span>So sánh</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="IconInProduct" href="@Url.Action("Index", "ShopDetails", new {MaSanPham = j.maSP })"><i class="fas fa-search"></i> <span>Xem chi tiết</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="product__item__text">
+                                                <h6>@j.tenSP</h6>
+                                                @using (Html.BeginForm("AddToCart", "Shop", FormMethod.Post))
+                                                {
+                                                    <input type="hidden" name="maSP" value="@j.maSP" />
+                                                    <button class="add-cart">+ Thêm vào giỏ hàng</button>
+                                                }
+                                                <div class="rating">
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                                <h5>@String.Format("{0:#,##0} VNĐ", j.giaBan)</h5>
+                                                <div class="product__color__select">
+                                                    <label for="pc-1">
+                                                        <input type="radio" id="pc-1">
+                                                    </label>
+                                                    <label class="active black" for="pc-2">
+                                                        <input type="radio" id="pc-2">
+                                                    </label>
+                                                    <label class="grey" for="pc-3">
+                                                        <input type="radio" id="pc-3">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    if (n++ >= 9)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->
+<!-- Chuyển Tab Menu -->
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "flex";
+        document.getElementById(cityName).style.flexWrap = "wrap";
+        document.getElementById(cityName).style.marginRight = "-15px";
+        document.getElementById(cityName).style.marginLeft = "-15px";
+        evt.currentTarget.className += " active";
+    }
+</script>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="96dcd287657b487294dcda163619831c" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.BaiViet" Width="1.5" PointX="0.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.CtDonHang" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.DonHang" Width="1.5" PointX="7.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.KhachHang" Width="1.5" PointX="9.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.LoaiSP" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.SanPham" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.TaiKhoan" Width="1.5" PointX="5" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="MaleFashionShop_DataModel.FK__BaiViet__taiKhoa__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="MaleFashionShop_DataModel.FK__CtDonHang__maSP__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="MaleFashionShop_DataModel.FK__CtDonHang__soDH__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="MaleFashionShop_DataModel.FK__DonHang__maKH__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="MaleFashionShop_DataModel.FK__DonHang__taiKhoa__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="MaleFashionShop_DataModel.FK__SanPham__maLoai__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="MaleFashionShop_DataModel.FK__SanPham__taiKhoa__48CFD27E" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MaleFashionShop_DataModel.UserGroup" Width="1.5" PointX="9.75" PointY="4.25" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

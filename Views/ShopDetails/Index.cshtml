@@ -1,0 +1,237 @@
+﻿@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+    SanPham i = ViewData["SpCanXem"] as SanPham;
+}
+
+<!-- Shop Details Section Begin -->
+<section class="shop-details">
+    <div class="product__details__pic">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__breadcrumb">
+                        <a href="./shop.html">Mua Sắm</a>
+                        <span>Thông tin sản phẩm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#@i.hinhDD" role="tab">
+                                @*<div class="product__thumb__pic set-bg" data-setbg="@i.hinhDD"></div>*@
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="@i.hinhDD" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img src="@i.hinhDD" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product__details__content">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product__details__text">
+                        <h4>Hooded thermal anorak</h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <span> - 5 Sao</span>
+                        </div>
+                        <h3>@String.Format("{0:#,##0}", i.giaBan) VNĐ<span>@String.Format("{0:#,##0}", i.giaGoc) VNĐ</span></h3>
+                        <p>
+                            @i.ndTomTat
+                        </p>
+                        <div class="product__details__option">
+                            <div class="product__details__option__size">
+                                <span>Kích cỡ:</span>
+                                <label for="xxl">
+                                    S
+                                    <input type="radio" id="xxl">
+                                </label>
+                                <label class="active" for="xl">
+                                    M
+                                    <input type="radio" id="xl">
+                                </label>
+                                <label for="l">
+                                    L
+                                    <input type="radio" id="l">
+                                </label>
+                                <label for="sm">
+                                    XL
+                                    <input type="radio" id="sm">
+                                </label>
+                            </div>
+                            <div class="product__details__option__color">
+                                <span>Màu:</span>
+                                <label class="c-1" for="sp-1">
+                                    <input type="radio" id="sp-1">
+                                </label>
+                                <label class="c-2" for="sp-2">
+                                    <input type="radio" id="sp-2">
+                                </label>
+                                <label class="c-3" for="sp-3">
+                                    <input type="radio" id="sp-3">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="product__details__cart__option">
+                            <div class="quantity">
+                                @using (Html.BeginForm("AddToCart", "Shop", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="maSP" value="@i.maSP" />
+                                    <button style="margin-top:10px; padding:10px 50px;" class="add-cart">+ Thêm vào giỏ hàng</button>
+                                }
+                            </div>
+                        </div>
+                        <div class="product__details__btns__option">
+                            <a href="#"><i class="fa fa-heart"></i> THÍCH SẢN PHẨM</a>
+                            <a href="#"><i class="fa fa-exchange"></i> THÊM ĐỂ SO SÁNH</a>
+                        </div>
+                        <div class="product__details__last__option">
+                            <h5><span>Đảm bảo thanh toán an toàn</span></h5>
+                            <img src="Images/shop-details/details-payment.png" alt="">
+                            <ul>
+                                <li><span>Mã sản phẩm:</span> @i.maSP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-5" role="tab">
+                                    Miêu tả
+                                    sản phẩm
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
+                                    Phản hồi từ
+                                    khách hàng
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">
+                                    Hỏi đáp
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Thông tin chi tiết sản phẩm</h5>
+                                        <p>
+                                            @Html.Raw(i.NoiDung)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Người dùng khác</h5>
+                                        <p>
+                                            (Chưa có)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-7" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Người dùng khác</h5>
+                                        <p>
+                                            (Chưa có)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Details Section End -->
+<!-- Related Section Begin -->
+<section class="related spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="related-title">Sản phẩm liên quan</h3>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (SanPham j in Common.getProductNew(4))
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="@j.hinhDD">
+                            <span class="label">Mới</span>
+                            <ul class="product__hover">
+                                <li>
+                                    <a href="#"><img src="Images/icon/heart.png" alt=""> <span>Thích</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="Images/icon/compare.png" alt=""> <span>So sánh</span></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "ShopDetails", new {MaSanPham = j.maSP })"><img src="Images/icon/search.png" alt=""> <span>Xem chi tiết</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>@j.tenSP</h6>
+                            @using (Html.BeginForm("AddToCart", "Shop", FormMethod.Post))
+                            {
+                                <input type="hidden" name="maSP" value="@j.maSP" />
+                                <button class="add-cart">+ Thêm vào giỏ hàng</button>
+                            }
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>@String.Format("{0:#,##0} VNĐ", j.giaBan)</h5>
+                            <div class="product__color__select">
+                                <label for="pc-1">
+                                    <input type="radio" id="pc-1">
+                                </label>
+                                <label class="active black" for="pc-2">
+                                    <input type="radio" id="pc-2">
+                                </label>
+                                <label class="grey" for="pc-3">
+                                    <input type="radio" id="pc-3">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Related Section End -->

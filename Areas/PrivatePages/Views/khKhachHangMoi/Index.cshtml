@@ -1,0 +1,107 @@
+﻿@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Khách hàng <i class="fas fa-arrow-right"></i> <small>Khách hàng mới</small> </h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <!-- start project list -->
+                        <table class="table table-striped projects">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%">Tên khách hàng</th>
+                                    <th>Ảnh đại diện</th>
+                                    <th>Vai trò</th>
+                                    <th style="width: 30%">Nút lệnh</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ foreach (TaiKhoan k in Common.getUser(5))
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a>@k.hoDem @k.tenTV</a>
+                                                <br />
+                                                <small>
+                                                    Tài khoản được tạo vào lúc :
+                                                    <br />@string.Format("{0: HH:mm:ss - dddd, dd MMMM, yyyy}", k.ngayTao)
+                                                </small>
+                                            </td>
+                                            <td>
+                                                <img src="~/Images/AvatarUser.png" style="width:10%;" />
+                                            </td>
+                                            @{
+                                                if (@k.GroupID == "1")
+                                                {
+                                                    <td>
+                                                        Người Dùng Thông Thường
+                                                    </td>
+                                                };
+                                                if (@k.GroupID == "2")
+                                                {
+                                                    <td>
+                                                        Người Vận Chuyển
+                                                    </td>
+                                                };
+                                            }
+                                            <td>
+                                                <a href="@Url.Action("Index", "khThongTinKhachHang", new { taiKhoan1 = k.taiKhoan1 })" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Xem </a>
+                                                @using (Html.BeginForm("Delete", "khKhachHangMoi", FormMethod.Post))
+                                                {
+                                                    <input type="hidden" name="tenTaiKhoan" value="@k.taiKhoan1" />
+                                                    <button class="btn btn-danger" title="Xóa bài viết"><i class="fa fa-trash-o"></i> Xóa</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <!-- end project list -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<!-- /page content -->

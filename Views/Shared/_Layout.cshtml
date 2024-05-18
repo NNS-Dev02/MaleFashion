@@ -1,0 +1,196 @@
+﻿@using System.Web.Optimization;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Male-Fashion</title>
+    <!-- Icon WEBSITE -->
+    <link rel="shortcut icon" href="~/Images/TabWeb.png" type="image/x-icon" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- Css Styles -->
+    @Styles.Render("~/bundle/css1")
+
+    @*Hàm gọi active cho Menu*@
+    <script>
+        window.addEventListener('load', function () {
+            $(".activeMenu >li>a[href='" + location.pathname + "']").parent().addClass("active").each(function () {
+                $(".activeMenu >li>a[href='" + $(this).attr("href") + "']").parent().addClass("active")
+            });
+        })
+    </script>
+
+</head>
+<body>
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+                <a href="@Url.Action("Index", "Login")">Đăng Nhập</a>
+            </div>
+            <div class="offcanvas__top__hover">
+                <span>VNĐ <i class="arrow_carrot-down"></i></span>
+                <ul>
+                    <li>EUR</li>
+                    <li>USD</li>
+                </ul>
+            </div>
+        </div>
+        <div class="offcanvas__nav__option">
+            <span class="search-switch IconMenu"><i class="fas fa-search"></i></span>
+            <span class="IconMenu" style="margin: 0px 15px;"><i class="fas fa-heart"></i></span>
+            <a class="IconMenu" href="@Url.Action("Index", "ShoppingCart")"><i class="fas fa-shopping-bag"></i></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__text">
+            <p>Miễn phí vận chuyển, hoàn trả trong 30 ngày hoặc đảm bảo hoàn lại tiền.</p>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="header__top__left">
+                            <p>Miễn phí vận chuyển, hoàn trả trong 30 ngày hoặc đảm bảo hoàn lại tiền.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="header__top__right">
+                            <div class="header__top__links">
+                                <a href="@Url.Action("Index", "Login")">Đăng Nhập</a>
+                            </div>
+                            <div class="header__top__hover">
+                                <span>VNĐ <i class="arrow_carrot-down"></i></span>
+                                <ul>
+                                    <li>EUR</li>
+                                    <li>USD</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Images/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul class="activeMenu" style="font-size: 7px;">
+                            <li><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                            <li><a href="@Url.Action("Index", "Shop")">Mua Sắm</a></li>
+                            <li><a href="@Url.Action("Index", "About")">Thông Tin</a></li>
+                            <li><a href="@Url.Action("Index", "Blog")">Tin Tức</a></li>
+                            <li><a href="@Url.Action("Index", "Contacts")">Liên Hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__nav__option">
+                        <span class="search-switch IconMenu"><i class="fas fa-search"></i></span>
+                        <span class="IconMenu" style="margin: 0px 15px;"><i class="fas fa-heart"></i></span>
+                        <a class="IconMenu" href="@Url.Action("Index", "ShoppingCart")"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    @RenderBody()
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="~/Images/footer-logo.png" alt=""></a>
+                        </div>
+                        <p>Khách hàng là trọng tâm của mô hình kinh doanh độc đáo của chúng tôi, bao gồm cả thiết kế.</p>
+                        <a href="#"><img src="~/Images/payment.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>MUA SẮM</h6>
+                        <ul>
+                            <li><a href="#">Cửa hàng quần áo</a></li>
+                            <li><a href="#">Giày thịnh hành</a></li>
+                            <li><a href="#">Trang sức</a></li>
+                            <li><a href="#">Giảm giá</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>MUA SẮM</h6>
+                        <ul>
+                            <li><a href="#">Liên hệ với chúng tôi</a></li>
+                            <li><a href="#">Phương thức thanh toán</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Trả lại & Trao đổi</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>THƯ MỚI</h6>
+                        <div class="footer__newslatter">
+                            <p>Hãy là người đầu tiên biết về những người mới đến, xem sách, bán hàng và quảng cáo!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Email của bạn">
+                                <button type="submit"><span class="icon_mail_alt"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>
+                            Bản Quyền ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            Được phép lưu | Mẫu này được tạo bởi <a href="https://colorlib.com" target="_blank"> Nguyễn Ngọc Sơn <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Tìm kiếm tại đây.....">
+            </form>
+        </div>
+    </div>
+
+    <!-- Js Plugins -->
+    @Scripts.Render("~/bundle/script1")
+
+</body>
+</html>

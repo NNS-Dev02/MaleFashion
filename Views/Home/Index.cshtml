@@ -1,0 +1,373 @@
+﻿@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        <div class="hero__items set-bg" data-setbg="Images/hero/hero-1.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h6>BỘ SƯU TẬP MÙA HÈ</h6>
+                            <h2>Bộ sưu tập mùa thu - đông 2030</h2>
+                            <p>
+                                Một nhãn hiệu chuyên nghiệp tạo ra các yếu tố cần thiết sang trọng.
+                                Được chế tạo về mặt đạo đức với một cam kết vững chắc về chất lượng đặc biệt.
+                            </p>
+                            <a href="@Url.Action("Index", "Shop")" class="primary-btn">MUA SẮM NGAY <span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero__items set-bg" data-setbg="Images/hero/hero-2.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h6>BỘ SƯU TẬP MÙA HÈ</h6>
+                            <h2>Bộ sưu tập mùa thu - đông 2030</h2>
+                            <p>
+                                Một nhãn hiệu chuyên nghiệp tạo ra các yếu tố cần thiết sang trọng.
+                                Được chế tạo về mặt đạo đức với một cam kết vững chắc về chất lượng đặc biệt.
+                            </p>
+                            <a href="@Url.Action("Index", "Shop")" class="primary-btn">MUA SẮM NGAY <span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Banner Section Begin -->
+<section class="banner spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 offset-lg-4">
+                <div class="banner__item">
+                    <div class="banner__item__pic">
+                        <img src="~/Images/banner/banner-1.jpg" alt="">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Bộ sưu tập Quần Áo 2030</h2>
+                        <a href="@Url.Action("Index", "Shop")">MUA SẮM NGAY</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="banner__item banner__item--middle">
+                    <div class="banner__item__pic">
+                        <img src="~/Images/banner/banner-2.jpg" alt="">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Trang Sức</h2>
+                        <a href="@Url.Action("Index", "Shop")">MUA SẮM NGAY</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="banner__item banner__item--last">
+                    <div class="banner__item__pic">
+                        <img src="~/Images/banner/banner-3.jpg" alt="">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Bộ sưu tập Giày 2030</h2>
+                        <a href="@Url.Action("Index", "Shop")">MUA SẮM NGAY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="filter__controls">
+                    <li data-filter=".old-arrivals">Bán chạy nhất</li>
+                    <li data-filter=".new-arrivals">Sản phẩm mới</li>
+                    <li data-filter=".hot-sales">Siêu giảm giá</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row product__filter">
+            @{
+                foreach (SanPham j in Common.getProductOld(4))
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix old-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="@j.hinhDD">
+                                <ul class="product__hover">
+                                    <li>
+                                        <a href="#"><img src="~/Images/icon/heart.png" alt=""> <span>Thích</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="~/Images/icon/compare.png" alt=""> <span>So sánh</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "ShopDetails", new {MaSanPham = j.maSP })"><img src="~/Images/icon/search.png" alt=""> <span>Xem chi tiết</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>@j.tenSP</h6>
+                                @using (Html.BeginForm("AddToCart", "Home", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="maSP" value="@j.maSP" />
+                                    <button class="add-cart">+ Thêm vào giỏ hàng</button>
+                                }
+                                <div class="rating">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <h5>@String.Format("{0:#,##0} VNĐ", j.giaBan)</h5>
+                                <div class="product__color__select">
+                                    <label for="pc-1">
+                                        <input type="radio" id="pc-1">
+                                    </label>
+                                    <label class="active black" for="pc-2">
+                                        <input type="radio" id="pc-2">
+                                    </label>
+                                    <label class="grey" for="pc-3">
+                                        <input type="radio" id="pc-3">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+            @{
+                foreach (SanPham j in Common.getProductNew(4))
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="@j.hinhDD">
+                                <span class="label">MỚI</span>
+                                <ul class="product__hover">
+                                    <li>
+                                        <a href="#"><img src="~/Images/icon/heart.png" alt=""> <span>Thích</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="~/Images/icon/compare.png" alt=""> <span>So sánh</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "ShopDetails", new {MaSanPham = j.maSP })"><img src="~/Images/icon/search.png" alt=""> <span>Xem chi tiết</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>@j.tenSP</h6>
+                                @using (Html.BeginForm("AddToCart", "Home", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="maSP" value="@j.maSP" />
+                                    <button class="add-cart">+ Thêm vào giỏ hàng</button>
+                                }
+                                <div class="rating">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <h5>@String.Format("{0:#,##0} VNĐ", j.giaBan)</h5>
+                                <div class="product__color__select">
+                                    <label for="pc-1">
+                                        <input type="radio" id="pc-1">
+                                    </label>
+                                    <label class="active black" for="pc-2">
+                                        <input type="radio" id="pc-2">
+                                    </label>
+                                    <label class="grey" for="pc-3">
+                                        <input type="radio" id="pc-3">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+            @{
+                foreach (SanPham j in Common.getProductSale(4))
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
+                        <div class="product__item sale">
+                            <div class="product__item__pic set-bg" data-setbg="@j.hinhDD">
+                                <span class="label">GIẢM GIÁ</span>
+                                <ul class="product__hover">
+                                    <li>
+                                        <a href="#"><img src="~/Images/icon/heart.png" alt=""> <span>Thích</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="~/Images/icon/compare.png" alt=""> <span>So sánh</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "ShopDetails", new {MaSanPham = j.maSP })"><img src="~/Images/icon/search.png" alt=""> <span>Xem chi tiết</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>@j.tenSP</h6>
+                                @using (Html.BeginForm("AddToCart", "Home", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="maSP" value="@j.maSP" />
+                                    <button class="add-cart">+ Thêm vào giỏ hàng</button>
+                                }
+                                <div class="rating">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <h5>@String.Format("{0:#,##0} VNĐ", j.giaBan)</h5>
+                                <div class="product__color__select">
+                                    <label for="pc-1">
+                                        <input type="radio" id="pc-1">
+                                    </label>
+                                    <label class="active black" for="pc-2">
+                                        <input type="radio" id="pc-2">
+                                    </label>
+                                    <label class="grey" for="pc-3">
+                                        <input type="radio" id="pc-3">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+<!-- Categories Section Begin -->
+<section class="categories spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="categories__text">
+                    <h2>Quần Áo Nổi Bật <br /> <span>Bộ Sưu Tập Giày</span> <br /> Trang Sức</h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="categories__hot__deal">
+                    <img src="~/Images/product-sale.png" alt="">
+                    <div class="hot__deal__sticker">
+                        <span>Giảm còn</span>
+                        <h5>2 triệu 9</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1">
+                <div class="categories__deal__countdown">
+                    <span>CHỈ TRONG TUẦN NÀY</span>
+                    <h2>Túi đeo ngực nhiều ngăn Màu đen</h2>
+                    <div class="categories__deal__countdown__timer" id="countdown">
+                        <div class="cd-item">
+                            <span>3</span>
+                            <p>Ngày</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>1</span>
+                            <p>Giờ</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>50</span>
+                            <p>Phút</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>18</span>
+                            <p>Giây</p>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("Index", "Shop")">MUA SẮM NGAY</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Instagram Section Begin -->
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="instagram__pic">
+                    <div class="instagram__pic__item set-bg"><img src="~/Images/instagram/instagram-1.jpg" /></div>
+                    <div class="instagram__pic__item set-bg"><img src="~/Images/instagram/instagram-2.jpg" /></div>
+                    <div class="instagram__pic__item set-bg"><img src="~/Images/instagram/instagram-3.jpg" /></div>
+                    <div class="instagram__pic__item set-bg"><img src="~/Images/instagram/instagram-4.jpg" /></div>
+                    <div class="instagram__pic__item set-bg"><img src="~/Images/instagram/instagram-5.jpg" /></div>
+                    <div class="instagram__pic__item set-bg"><img src="~/Images/instagram/instagram-6.jpg" /></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="instagram__text">
+                    <h2>Instagram</h2>
+                    <p>
+                        Nỗi đau chính là tình yêu của nỗi đau, những vấn đề sinh thái chính,
+                        nhưng tôi cho loại thời gian này để rơi xuống, để một số nỗi đau và nỗi đau lớn.
+                    </p>
+                    <h3>#Male_Fashion</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram Section End -->
+<!-- Latest Blog Section Begin -->
+<section class="latest spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>TIN MỚI NHẤT</span>
+                    <h2>Xu hướng thời trang mới</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{ foreach (BaiViet k in Common.getArticlesNew(3))
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic set-bg" data-setbg="@k.hinhDD"></div>
+                            <div class="blog__item__text">
+                                <span><img src="~/Images/icon/calendar.png" alt=""> @k.ngayDang</span>
+                                <h5>@k.tenBV</h5>
+                                <a href="@Url.Action("Index", "BlogDetails", new { maBV = k.maBV })">Đọc thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+<!-- Latest Blog Section End -->

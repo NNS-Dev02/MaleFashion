@@ -1,0 +1,143 @@
+﻿@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+    TaiKhoan x = ViewData["ThongTinKhachHang"] as TaiKhoan;
+}
+
+<!-- page User -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Thông tin cá nhân</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-md-3 col-sm-3  profile_left">
+                            <div class="profile_img">
+                                <div id="crop-avatar">
+                                    <!-- Current avatar -->
+                                    <img class="img-responsive avatar-view" src="~/Images/AvatarUser.png" alt="Avatar" style="width:200px;">
+                                </div>
+                            </div>
+                            <h3>@x.hoDem @x.tenTV</h3>
+                            @{
+                                if (@x.GroupID == "1")
+                                {
+                                    <ul class="list-unstyled user_data">
+                                        <li>Người dùng thông thường <i class="fas fa-users"></i></li>
+                                        <li>
+                                            Các chức năng :
+                                            <ul style="list-style-type:none;">
+                                                <li>Đăng bài viết <i style="color:green;" class="fas fa-check-circle"></i></li>
+                                                <li>Đăng sản phẩm <i style="color:green;" class="fas fa-check-circle"></i></li>
+                                                <li>Quản lí khách hàng <i style="color:red;" class="fas fa-times-circle"></i></li>
+                                                <li>Quản lí đơn hàng <i style="color:green;" class="fas fa-check-circle"></i></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                };
+                                if (@x.GroupID == "2")
+                                {
+                                    <ul class="list-unstyled user_data">
+                                        <li>Người vận chuyển <i class="fas fa-shipping-fast"></i></li>
+                                        <li>
+                                            Các chức năng :
+                                            <ul style="list-style-type:none;">
+                                                <li>Đăng bài viết <i style="color:red;" class="fas fa-times-circle"></i></li>
+                                                <li>Đăng sản phẩm <i style="color:red;" class="fas fa-times-circle"></i></li>
+                                                <li>Quản lí khách hàng <i style="color:red;" class="fas fa-times-circle"></i></li>
+                                                <li>Quản lí đơn hàng <i style="color:green;" class="fas fa-check-circle"></i></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                };
+                            }
+
+                            <a class="btn btn-success" style="padding: 10px 30px;color:black;"><i class="fa fa-edit m-right-xs"></i>Chỉnh sửa thông tin</a>
+                            <br />
+
+                        </div>
+                        <div class="col-md-9 col-sm-9 ">
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#tab_content1" id="profile-tab" role="tab" data-toggle="tab" aria-expanded="true">Tiểu sử</a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#tab_content2" role="tab" id="evaluate-tab2" data-toggle="tab" aria-expanded="false">Đánh giá</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+
+                                    <!--Tiểu sử-->
+                                    <div role="tabpanel" class="tab-pane active" id="tab_content1" aria-labelledby="profile-tab">
+                                        <ul>
+                                            <li>Email  :  @x.email</li>
+                                            <li>Địa chỉ  :  @x.diaChi</li>
+                                            <li>Giới tính  :  @x.GioiTinh</li>
+                                            <li>Ngày sinh  :  @string.Format("{0: dd/MM/yyyy}", x.ngaysinh)</li>
+                                            <li>Ngày tạo tài khoản  :  @string.Format("{0: HH:mm:ss - dddd, dd MMMM, yyyy}", x.ngayTao)</li>
+                                            <li>Điện thoại  :  @x.soDT</li>
+                                        </ul>
+                                        <p>Mô tả thêm chi tiết...</p>
+                                    </div>
+
+                                    <!--Đánh giá-->
+                                    <div role="tabpanel" class="tab-pane fade " id="tab_content2" aria-labelledby="evaluate-tab">
+                                        <ul class="messages">
+                                            <li>
+                                                <img src="~/Images/AvatarUser.png" class="avatar" alt="Avatar">
+                                                <div class="message_date">
+                                                    <h3 class="date text-info">19</h3>
+                                                    <p class="month">Tháng 1</p>
+                                                </div>
+                                                <div class="message_wrapper">
+                                                    <h4 class="heading">Người dùng khác</h4>
+                                                    <blockquote class="message">Chi tiết đánh giá.<br />(Chức năng này sắp có)</blockquote>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page User -->
+<br />
+<br />

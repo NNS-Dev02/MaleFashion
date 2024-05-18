@@ -1,0 +1,454 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{97D2A0A6-D983-46B2-A46A-78E61AF6C337}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MaleFashion</RootNamespace>
+    <AssemblyName>MaleFashion</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44319</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\area\bootstrap.min.css" />
+    <Content Include="Content\area\custom.min.css" />
+    <Content Include="Content\area\dashboard\bootstrap-progressbar-3.3.4.min.css" />
+    <Content Include="Content\area\database\buttons.bootstrap.min.css" />
+    <Content Include="Content\area\database\dataTables.bootstrap.min.css" />
+    <Content Include="Content\area\database\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\area\database\responsive.bootstrap.min.css" />
+    <Content Include="Content\area\database\scroller.bootstrap.min.css" />
+    <Content Include="Content\area\daterangepicker.css" />
+    <Content Include="Content\area\font-awesome.min.css" />
+    <Content Include="Content\area\green.css" />
+    <Content Include="Content\area\nprogress.css" />
+    <Content Include="Content\area\prettify.min.css" />
+    <Content Include="Content\area\select2.min.css" />
+    <Content Include="Content\area\starrr.css" />
+    <Content Include="Content\area\switchery.min.css" />
+    <Content Include="Content\login\animate.min.css" />
+    <Content Include="Content\login\bootstrap.min.css" />
+    <Content Include="Content\login\custom.min.css" />
+    <Content Include="Content\login\font-awesome.min.css" />
+    <Content Include="Content\login\nprogress.css" />
+    <Content Include="Content\MaleFashion\bootstrap.min.css" />
+    <Content Include="Content\MaleFashion\elegant-icons.css" />
+    <Content Include="Content\MaleFashion\font-awesome.min.css" />
+    <Content Include="Content\MaleFashion\magnific-popup.css" />
+    <Content Include="Content\MaleFashion\nice-select.css" />
+    <Content Include="Content\MaleFashion\owl.carousel.min.css" />
+    <Content Include="Content\MaleFashion\slicknav.min.css" />
+    <Content Include="Content\MaleFashion\style.css" />
+    <Content Include="Content\MaleFashion\PagedList.css" />
+    <Content Include="Content\MaleFashion\Site.css" />
+    <Content Include="fonts\ElegantIcons.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\about\about-us.jpg" />
+    <Content Include="Images\about\team-1.jpg" />
+    <Content Include="Images\about\team-2.jpg" />
+    <Content Include="Images\about\team-3.jpg" />
+    <Content Include="Images\about\team-4.jpg" />
+    <Content Include="Images\about\testimonial-author.jpg" />
+    <Content Include="Images\about\testimonial-pic.jpg" />
+    <Content Include="Images\american-express.png" />
+    <Content Include="Images\AvatarUser.png" />
+    <Content Include="Images\banner\banner-1.jpg" />
+    <Content Include="Images\banner\banner-2.jpg" />
+    <Content Include="Images\banner\banner-3.jpg" />
+    <Content Include="Images\blog\blog-4.jpg" />
+    <Content Include="Images\breadcrumb-bg.jpg" />
+    <Content Include="Images\clients\client-1.png" />
+    <Content Include="Images\clients\client-2.png" />
+    <Content Include="Images\clients\client-3.png" />
+    <Content Include="Images\clients\client-4.png" />
+    <Content Include="Images\clients\client-5.png" />
+    <Content Include="Images\clients\client-6.png" />
+    <Content Include="Images\clients\client-7.png" />
+    <Content Include="Images\clients\client-8.png" />
+    <Content Include="Images\footer-logo.png" />
+    <Content Include="Images\hero\hero-1.jpg" />
+    <Content Include="Images\hero\hero-2.jpg" />
+    <Content Include="Images\icon\calendar.png" />
+    <Content Include="Images\icon\cart.png" />
+    <Content Include="Images\icon\compare.png" />
+    <Content Include="Images\icon\heart.png" />
+    <Content Include="Images\icon\search.png" />
+    <Content Include="Images\instagram\instagram-1.jpg" />
+    <Content Include="Images\instagram\instagram-2.jpg" />
+    <Content Include="Images\instagram\instagram-3.jpg" />
+    <Content Include="Images\instagram\instagram-4.jpg" />
+    <Content Include="Images\instagram\instagram-5.jpg" />
+    <Content Include="Images\instagram\instagram-6.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\LOGO_Shop.png" />
+    <Content Include="Images\mastercard.png" />
+    <Content Include="Images\payment.png" />
+    <Content Include="Images\paypal.png" />
+    <Content Include="Images\product-sale.png" />
+    <Content Include="Images\shop-details\details-payment.png" />
+    <Content Include="Images\TabWeb.png" />
+    <Content Include="Images\visa.png" />
+    <Content Include="Models\MaleFashion.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MaleFashion.edmx</DependentUpon>
+      <LastGenOutput>MaleFashion.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MaleFashion.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MaleFashion.edmx</DependentUpon>
+      <LastGenOutput>MaleFashion.cs</LastGenOutput>
+    </Content>
+    <Content Include="Script\area\autosize.min.js" />
+    <Content Include="Script\area\bootstrap-progressbar.min.js" />
+    <Content Include="Script\area\bootstrap-wysiwyg.min.js" />
+    <Content Include="Script\area\bootstrap.bundle.min.js" />
+    <Content Include="Script\area\custom.min.js" />
+    <Content Include="Script\area\dashboard\Chart.min.js" />
+    <Content Include="Script\area\dashboard\curvedLines.js" />
+    <Content Include="Script\area\dashboard\date.js" />
+    <Content Include="Script\area\dashboard\gauge.min.js" />
+    <Content Include="Script\area\dashboard\jquery.flot.js" />
+    <Content Include="Script\area\dashboard\jquery.flot.orderBars.js" />
+    <Content Include="Script\area\dashboard\jquery.flot.pie.js" />
+    <Content Include="Script\area\dashboard\jquery.flot.resize.js" />
+    <Content Include="Script\area\dashboard\jquery.flot.spline.min.js" />
+    <Content Include="Script\area\dashboard\jquery.flot.stack.js" />
+    <Content Include="Script\area\dashboard\jquery.flot.time.js" />
+    <Content Include="Script\area\dashboard\jquery.sparkline.min.js" />
+    <Content Include="Script\area\dashboard\morris.min.js" />
+    <Content Include="Script\area\dashboard\raphael.min.js" />
+    <Content Include="Script\area\dashboard\skycons.js" />
+    <Content Include="Script\area\database\buttons.bootstrap.min.js" />
+    <Content Include="Script\area\database\buttons.flash.min.js" />
+    <Content Include="Script\area\database\buttons.html5.min.js" />
+    <Content Include="Script\area\database\buttons.print.min.js" />
+    <Content Include="Script\area\database\dataTables.bootstrap.min.js" />
+    <Content Include="Script\area\database\dataTables.buttons.min.js" />
+    <Content Include="Script\area\database\dataTables.fixedHeader.min.js" />
+    <Content Include="Script\area\database\dataTables.keyTable.min.js" />
+    <Content Include="Script\area\database\dataTables.responsive.min.js" />
+    <Content Include="Script\area\database\dataTables.scroller.min.js" />
+    <Content Include="Script\area\database\jquery.dataTables.min.js" />
+    <Content Include="Script\area\database\jszip.min.js" />
+    <Content Include="Script\area\database\pdfmake.min.js" />
+    <Content Include="Script\area\database\responsive.bootstrap.js" />
+    <Content Include="Script\area\database\vfs_fonts.js" />
+    <Content Include="Script\area\daterangepicker.js" />
+    <Content Include="Script\area\fastclick.js" />
+    <Content Include="Script\area\icheck.min.js" />
+    <Content Include="Script\area\jquery.autocomplete.min.js" />
+    <Content Include="Script\area\jquery.hotkeys.js" />
+    <Content Include="Script\area\jquery.min.js" />
+    <Content Include="Script\area\jquery.tagsinput.js" />
+    <Content Include="Script\area\moment.min.js" />
+    <Content Include="Script\area\nprogress.js" />
+    <Content Include="Script\area\parsley.min.js" />
+    <Content Include="Script\area\prettify.js" />
+    <Content Include="Script\area\select2.full.min.js" />
+    <Content Include="Script\area\starrr.js" />
+    <Content Include="Script\area\switchery.min.js" />
+    <Content Include="Script\MaleFashion\bootstrap.min.js" />
+    <Content Include="Script\MaleFashion\jquery-3.3.1.min.js" />
+    <Content Include="Script\MaleFashion\jquery.countdown.min.js" />
+    <Content Include="Script\MaleFashion\jquery.magnific-popup.min.js" />
+    <Content Include="Script\MaleFashion\jquery.nice-select.min.js" />
+    <Content Include="Script\MaleFashion\jquery.nicescroll.min.js" />
+    <Content Include="Script\MaleFashion\jquery.slicknav.js" />
+    <Content Include="Script\MaleFashion\main.js" />
+    <Content Include="Script\MaleFashion\mixitup.min.js" />
+    <Content Include="Script\MaleFashion\owl.carousel.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\bvChinhSuaBaiVietController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\bvDangBaiVietController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\bvDanhSachBaiVietController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\dhBiHuyDonController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\dhDaGiaoThanhCongController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\dhDangGiaoChoKhachController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\dhDangXuLyController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\khDanhSachKhachHangController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\khKhachHangMoiController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\khThongTinKhachHangController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\spChinhSuaSanPhamController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\spDangKinhDoanhController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\spDangSanPhamController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\spDanhSachSanPhamController.cs" />
+    <Compile Include="Areas\PrivatePages\Controllers\spLoaiSanPhamController.cs" />
+    <Compile Include="Areas\PrivatePages\Model\ThuongDung.cs" />
+    <Compile Include="Areas\PrivatePages\PrivatePagesAreaRegistration.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\BlogDetailsController.cs" />
+    <Compile Include="Controllers\CheckOutController.cs" />
+    <Compile Include="Controllers\CheckOutSuccessController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\ShopDetailsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaiViet.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CartShop.cs" />
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\CtDonHang.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonHang.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSP.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaHoa.cs" />
+    <Compile Include="Models\MaleFashion.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaleFashion.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaleFashion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaleFashion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaleFashion.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiKhoan.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserGroup.cs">
+      <DependentUpon>MaleFashion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\DashboardViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="fonts\ElegantIcons.eot" />
+    <Content Include="fonts\ElegantIcons.ttf" />
+    <Content Include="fonts\ElegantIcons.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\PrivatePages\Views\web.config" />
+    <Content Include="Areas\PrivatePages\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\Dashboard\Index.cshtml" />
+    <EntityDeploy Include="Models\MaleFashion.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MaleFashion.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MaleFashion.edmx.diagram">
+      <DependentUpon>MaleFashion.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\PrivatePages\Views\spDanhSachSanPham\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\dhDaGiaoThanhCong\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\bvDangBaiViet\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\dhDangGiaoChoKhach\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\spDangSanPham\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\bvDanhSachBaiViet\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\khDanhSachKhachHang\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\dhDangXuLy\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\khKhachHangMoi\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\spLoaiSanPham\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\spDangKinhDoanh\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\dhBiHuyDon\Index.cshtml" />
+    <Content Include="Content\MaleFashion\style.css.map" />
+    <Content Include="Areas\PrivatePages\Views\khThongTinKhachHang\Index.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\spChinhSuaSanPham\Update.cshtml" />
+    <Content Include="Areas\PrivatePages\Views\bvChinhSuaBaiViet\Update.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\BlogDetails\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\ShopDetails\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\CheckOutSuccess\Index.cshtml" />
+    <Content Include="Views\CheckOut\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Asset\Images\baiViet\" />
+    <Folder Include="Asset\Images\sanPham\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58744</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44319/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

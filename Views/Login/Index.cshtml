@@ -1,0 +1,72 @@
+﻿@using System.Web.Optimization;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng Nhập</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Icon WEBSITE -->
+    <link rel="shortcut icon" href="~/Images/TabWeb.png" type="image/x-icon" />
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <!-- Css Styles -->
+    @Styles.Render("~/bundle/css3")
+
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h1>Đăng nhập</h1>
+                        <div>
+                            @Html.TextBox("Acc", "", new { @class = "form-control", placeholder = "Tài khoản" })
+                        </div>
+                        <div>
+                            @Html.Password("Pass", "", new { @class = "form-control", placeholder = "Mật khẩu" })
+                        </div>
+                        <div>
+                            <input type="submit" value="Đăng nhập" class="btn btn-default submit"
+                                   style="border: 1px solid black; margin-left: 27%; width: 150px; border-radius: 40px; ">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                <a href="@Url.Action("Index", "Register")" class="to_register"> Tạo tài khoản mới? </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <a href="@Url.Action("Index", "Home")" style="text-decoration:none;">
+                                    <h1><i class="fab fa-shopify"></i> Male Fashion!</h1>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

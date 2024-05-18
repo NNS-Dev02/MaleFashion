@@ -1,0 +1,124 @@
+﻿@model MaleFashion.Models.KhachHang
+@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+    CartShop x = ViewData["Cart"] as CartShop;
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Thanh Toán</h4>
+                    <div class="breadcrumb__links">
+                        <a href="./shop.html">Mua Sắm</a>
+                        <span>Thanh Toán</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            @using (Html.BeginForm("SaveToDataBase", "CheckOut", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <h6 class="coupon__code">
+                            <span class="icon_tag_alt"></span> Có phiếu giảm giá?
+                            <a href="#" style="color: #77b527;"> Bấm vào đây để nhập mã của bạn.</a>
+                        </h6>
+                        <h6 class="checkout__title">Chi tiết hóa đơn</h6>
+                        <div class="row" style="margin-left:20px;">
+                            <div class="col-lg-4">
+                                <h5 style="font-weight: 700; color: red;">Thông tin khách hàng :</h5><br />
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Họ và tên<span>*</span></p>
+                                        @Html.TextBoxFor(m => m.tenKH, new { @placeholder = "Họ và tên..." })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Ngày sinh<span>*</span></p>
+                                        @Html.TextBoxFor(m => m.ngaySinh, new { @type = "date" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Giới tính<span>*</span></p>
+                                        <span style="padding-left: 77px">Nam</span>@Html.RadioButtonFor(m => m.gioiTinh, true, new { @style = "height: 20px;" })
+                                        <span style="padding-left: 84px">Nữ</span>@Html.RadioButton("gioiTinh", false, new { @name = "gioiTinh", @style = "height: 20px;" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5 style="font-weight: 700; color: red;">Thông tin liên lạc :</h5><br />
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        @Html.TextBoxFor(m => m.email, new { @placeholder = "Địa chỉ email..." })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Điện thoại<span>*</span></p>
+                                        @Html.TextBoxFor(m => m.soDT, new { @placeholder = "Số điện thoại..." })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="checkout__input">
+                                        <p>Địa chỉ<span>*</span></p>
+                                        @Html.TextBoxFor(m => m.diaChi, new { @placeholder = "Nơi nhận hàng..." })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5 style="font-weight: 700; color: red;">Thông tin khác :</h5><br />
+                                <div class="checkout__input col-lg-12">
+                                    <p>Ghi chú<span>*</span></p>
+                                    @Html.TextAreaFor(m => m.ghiChu, new { @style = "height: 250px", @row = "10", @placeholder = "Tin nhắn muốn gửi đến người giao hàng..." })
+                                    @Html.HiddenFor(m => m.ngayDat)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h4 class="order__title">Đơn hàng của bạn</h4>
+                            <div class="checkout__order__products">Sản phẩm <span>Số lượng</span></div>
+                            <ul class="checkout__total__products">
+                                @{
+                                    foreach (CtDonHang i in x.SanPhamDC.Values)
+                                    {
+                                        <li>-@Common.getNameProductByID(i.maSP) <span>@i.soLuong</span></li>
+                                    }
+                                }
+                            </ul>
+                            <ul class="checkout__total__all">
+                                <li>Tiền đơn hàng <span>@String.Format("{0:#,##0} VNĐ", x.totalOfCartShop())</span></li>
+                                <li title="1 Sản phẩm = 5.000 VNĐ.">
+                                    Phí vận chuyển <i class="fas fa-info-circle" style="color:red;"></i>
+                                    <span>@String.Format("{0:#,##0} VNĐ", x.totalOfShip())</span>
+                                </li>
+                                <li>Thuế VAT 3% <span>@String.Format("{0:#,##0} VNĐ", (x.totalOfCartShop() * 3) / 100)</span></li>
+                                <div class="h_line" style="width: 100%; height: 1px; background-color: red"></div>
+                                <li>TỔNG CỘNG <span>@String.Format("{0:#,##0} VNĐ", (x.totalOfCartShop() + x.totalOfShip() + (x.totalOfCartShop() * 3) / 100))</span></li>
+                            </ul>
+                            <a href="@Url.Action("Index", "ShoppingCart")" class="site-btn" style="background: #888; text-align: center;">Quay lại giỏ hàng</a>
+                            <button type="submit" class="site-btn" style="text-align:center;">Thanh Toán</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Checkout Section End -->

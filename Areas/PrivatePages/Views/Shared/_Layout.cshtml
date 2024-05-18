@@ -1,0 +1,223 @@
+﻿@using MaleFashion.Models;
+@using System.Web.Optimization;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trang Cá Nhân!</title>
+
+    <!-- Icon WEBSITE -->
+    <link rel="shortcut icon" href="~/Images/TabWeb.png" type="image/x-icon" />
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!--Style CSS-->
+    @Styles.Render("~/bundle/css2")
+
+</head>
+<body class="nav-md footer_fixed">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="@Url.Action("Index", "Dashboard")" class="site_title"><i class="fab fa-shopify"></i> <span>MaleFashion !</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/Images/AvatarUser.png" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Chào mừng,</span>
+                            <fieldset>
+                                @{
+                                    if (Session["HovaTen"] != null)
+                                    {
+                                        <h2>@Session["HovaTen"].ToString()</h2>
+                                    }
+                                }
+                            </fieldset>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Tổng Quan</h3>
+                            @{
+                                if (Session["Session_Group"] != null)
+                                {
+                                    List<String> DacQuyen = (List<string>)Session["Session_Group"];
+                                    if (DacQuyen[0].CompareTo("ADMIN") == 0)
+                                    {
+                                        <ul class="nav side-menu">
+                                            <li>
+                                                <a><i class="fa fa-newspaper"></i> Bài Viết <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "bvDangBaiViet")">Đăng bài viết mới</a></li>
+                                                    <li><a href="@Url.Action("Index", "bvDanhSachBaiViet", new { IsActive = 1 })">Bài viết đã duyệt</a></li>
+                                                    <li><a href="@Url.Action("Index", "bvDanhSachBaiViet", new { IsActive = 0 })">Bài viết chưa duyệt</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a><i class="fa fa-shopping-cart"></i> Sản Phẩm <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "spDangSanPham")">Đăng sản phẩm mới</a></li>
+                                                    <li><a href="@Url.Action("Index", "spDanhSachSanPham", new { IsActive = 1 })">Sản phẩm đã duyệt</a></li>
+                                                    <li><a href="@Url.Action("Index", "spDanhSachSanPham", new { IsActive = 0 })">Sản phẩm chưa duyệt</a></li>
+                                                    <li><a href="@Url.Action("Index", "spLoaiSanPham")">Loại sản phẩm</a></li>
+                                                    <li><a href="@Url.Action("Index", "spDangKinhDoanh")">Sản phẩm đang kinh doanh</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a><i class="fa fa-users"></i> Khách Hàng <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "khKhachHangMoi")">Khách hàng mới</a></li>
+                                                    <li><a href="@Url.Action("Index", "khDanhSachKhachHang")">Danh sách khách hàng</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a><i class="fa fa-edit"></i> Đơn Hàng <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "dhDangXuLy")">Đơn hàng đang xử lý</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhDangGiaoChoKhach")">Đang giao cho khách</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhDaGiaoThanhCong")">Đơn hàng giao thành công</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhBiHuyDon")">Đơn hàng bị hủy</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    }
+                                    if (DacQuyen[0].CompareTo("USER") == 0)
+                                    {
+                                        <ul class="nav side-menu">
+                                            <li>
+                                                <a><i class="fa fa-newspaper"></i> Bài Viết <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "bvDangBaiViet")">Đăng bài viết mới</a></li>
+                                                    <li><a href="@Url.Action("Index", "bvDanhSachBaiViet")">Bài viết đang xử lý</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a><i class="fa fa-shopping-cart"></i> Sản Phẩm <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "spDangSanPham")">Đăng sản phẩm mới</a></li>
+                                                    <li><a href="@Url.Action("Index", "spDanhSachSanPham")">Sản phẩm đang xử lý</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a><i class="fa fa-edit"></i> Đơn Hàng <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "dhDangXuLy")">Đơn hàng đang xử lý</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhDangGiaoChoKhach")">Đang giao cho khách</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhDaGiaoThanhCong")">Đơn hàng giao thành công</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhBiHuyDon")">Đơn hàng bị hủy</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    }
+                                    if (DacQuyen[0].CompareTo("SHIPPER") == 0)
+                                    {
+                                        <ul class="nav side-menu">
+                                            <li>
+                                                <a><i class="fa fa-edit"></i> Đơn Hàng <span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="@Url.Action("Index", "dhDangXuLy")">Đơn hàng đang xử lý</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhDangGiaoChoKhach")">Đang giao cho khách</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhDaGiaoThanhCong")">Đơn hàng giao thành công</a></li>
+                                                    <li><a href="@Url.Action("Index", "dhBiHuyDon")">Đơn hàng bị hủy</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Đăng xuất" href="@Url.Action("Index", "Home", new { area = "" })" style="width: 100% !important; color: #26b99a;">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <nav class="nav navbar-nav">
+                        <ul class=" navbar-right">
+                            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                                @{
+                                    if (Session["HovaTen"] != null)
+                                    {
+                                        <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                            <img src="~/Images/AvatarUser.png" alt="">@Session["HovaTen"].ToString()
+                                        </a>
+                                    }
+                                }
+                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Dashboard")"> Thông tin</a>
+                                    <a class="dropdown-item" href="javascript:;">Cài đặt (Updating...)</a>
+                                    @Html.ActionLink("Đăng xuất", "Index", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                                </div>
+                            </li>
+
+                            <li role="presentation" class="nav-item dropdown open">
+                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-green"></span>
+                                </a>
+                                <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                                    <li class="nav-item">
+                                        <div class="text-center">
+                                            <a class="dropdown-item">
+                                                <strong>Chức năng sắp có</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            @RenderBody()
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    MaleFashion Shop !
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundle/script2")
+
+</body>
+</html>

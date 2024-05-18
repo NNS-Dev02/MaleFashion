@@ -1,0 +1,107 @@
+﻿@using MaleFashion.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Khách hàng <i class="fas fa-arrow-right"></i> <small>Danh sách khách hàng</small> </h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div class="col-md-12 col-sm-12  text-center">
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    @{ foreach (TaiKhoan k in Common.getUser(999))
+                        {
+                            <div class="col-md-4 col-sm-4  profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <h4 class="brief">
+                                            @{
+                                                if (@k.GroupID == "1")
+                                                {
+                                                    <i>
+                                                        Người Dùng Thông Thường
+                                                    </i>
+                                                };
+                                                if (@k.GroupID == "2")
+                                                {
+                                                    <i>
+                                                        Người Vận Chuyển
+                                                    </i>
+                                                };
+                                            }
+                                        </h4>
+                                        <div class="left col-sm-7">
+                                            <h2>@k.hoDem @k.tenTV</h2>
+                                            <p>
+                                                <strong>Thông tin: </strong>
+                                                <br /> &emsp;Ngày sinh : @string.Format("{0: dd/MM/yyyy }", k.ngaysinh)
+                                                <br /> &emsp;Giới tính: @k.GioiTinh
+                                            </p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i> Địa chỉ : @k.diaChi</li>
+                                                <li><i class="fa fa-phone"></i> Điện thoại : @k.soDT </li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-sm-5 text-center">
+                                            <img src="~/Images/AvatarUser.png" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class=" bottom text-center">
+                                        <div class=" col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a>5.0</a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                                <a href="#"><span class="fa fa-star"></span></a>
+                                            </p>
+                                        </div>
+                                        <div class=" col-sm-6 emphasis">
+                                            <button type="button" class="btn btn-success btn-sm">
+                                                <i class="fa fa-user">
+                                                </i> <i class="fa fa-comments-o"></i>
+                                            </button>
+                                            <a href="@Url.Action("Index", "khThongTinKhachHang", new { taiKhoan1 = k.taiKhoan1 })" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-user"> </i> Xem chi tiết
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<!-- /page content -->
